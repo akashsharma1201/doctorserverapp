@@ -20,7 +20,7 @@ app.use(cors())
 // app.use(express.urlencoded({ extended: true }));
 // app.use(express.json())
 
-app.use("/app/api/user/", userRoute)
+app.use("/app/api/user", userRoute)
 app.use("/app/api/appointment/", verifyToken, appointmentRoute)
 // app.use("/app/api/appointment/", appointmentRoute)
 
