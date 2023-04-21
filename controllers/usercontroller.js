@@ -4,8 +4,8 @@ import bcrypt from "bcrypt"
 
 
 const registerUser = async (req, res) => {
-    // const { name, email, password, repassword } = req.body;
-    // const existingUser = await userModel.findOne({ email: email });
+    const { name, email, password, repassword } = req.body;
+    const existingUser = await userModel.findOne({ email: email });
     // if (existingUser) {
     //     res.send({ "status": "failed", "message": "user already exist" })
     // } else {
