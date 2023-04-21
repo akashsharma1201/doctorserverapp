@@ -4,38 +4,39 @@ import bcrypt from "bcrypt"
 
 
 const registerUser = async (req, res) => {
-    const { name, email, password, repassword } = req.body;
-    const existingUser = await userModel.findOne({ email: email });
-    if (existingUser) {
-        res.send({ "status": "failed", "message": "user already exist" })
-    } else {
-        if (name && email && password && repassword) {
-            if (password == repassword) {
-                const saltRounds = 10;
-                const hashPassword = await bcrypt.hash(password, saltRounds)
-                try {
-                    const newUser = await userModel({
-                        name: name,
-                        email: email,
-                        password: hashPassword,
-                        password_conform: repassword
-                    })
-                    await newUser.save()
-                    const saved_user = await userModel.findOne({ email: email });
-                    const token = jwt.sign({ userID: saved_user._id }, process.env.JWT_SECRET_KET, { expiresIn: "5d" })
-                    res.send({ "user": newUser, "token": token })
-                } catch (error) {
+    // const { name, email, password, repassword } = req.body;
+    // const existingUser = await userModel.findOne({ email: email });
+    // if (existingUser) {
+    //     res.send({ "status": "failed", "message": "user already exist" })
+    // } else {
+    //     if (name && email && password && repassword) {
+    //         if (password == repassword) {
+    //             const saltRounds = 10;
+    //             const hashPassword = await bcrypt.hash(password, saltRounds)
+    //             try {
+    //                 const newUser = await userModel({
+    //                     name: name,
+    //                     email: email,
+    //                     password: hashPassword,
+    //                     password_conform: repassword
+    //                 })
+    //                 await newUser.save()
+    //                 const saved_user = await userModel.findOne({ email: email });
+    //                 const token = jwt.sign({ userID: saved_user._id }, process.env.JWT_SECRET_KET, { expiresIn: "5d" })
+    //                 res.send({ "user": newUser, "token": token })
+    //             } catch (error) {
                   
-                    res.send({ "status": "failed", "message": "something went wrong" })
-                }
-            } else {
-                res.send({ "status": "failed", "message": "password and password_confirm is not same !" })
-            }
-        } else {
-            res.send({ "status": "failed", "message": "all fields are required !" })
-        }
-    }
+    //                 res.send({ "status": "failed", "message": "something went wrong" })
+    //             }
+    //         } else {
+    //             res.send({ "status": "failed", "message": "password and password_confirm is not same !" })
+    //         }
+    //     } else {
+    //         res.send({ "status": "failed", "message": "all fields are required !" })
+    //     }
+    // }
 
+    res.send("registerUser")
 }
 
 
