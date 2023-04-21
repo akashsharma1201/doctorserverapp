@@ -25,7 +25,7 @@ app.use("/app/api/appointment/", verifyToken, appointmentRoute)
 // app.use("/app/api/appointment/", appointmentRoute)
 
 
-
+ 
 
 //  DATABASE CONNECTION
 connectDB(DB_URL)
