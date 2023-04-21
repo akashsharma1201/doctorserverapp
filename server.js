@@ -26,9 +26,7 @@ app.use("/app/api/appointment/", verifyToken, appointmentRoute)
 
 
 
-app.get("/" , (req , res)=>{
-    res.send({eessage : "this is get request"})
-})
+
 //  DATABASE CONNECTION
 connectDB(DB_URL)
 
