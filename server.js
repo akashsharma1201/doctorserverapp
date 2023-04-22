@@ -24,7 +24,7 @@ app.use("/app/api/user", userRoute)
 app.use("/app/api/appointment", verifyToken, appointmentRoute)
 // app.use("/app/api/appointment/", appointmentRoute)
 
-
+// console.log(process.env.DB_URL);
  
 
 //  DATABASE CONNECTION
